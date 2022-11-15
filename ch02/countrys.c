@@ -1,17 +1,8 @@
-//convert 
-
 #include <stdio.h>
 
 
-void br()
-{
-    printf("Brazil, Russia\n");
-}
-
-void ic()
-{
-    printf("India, China");
-}
+void br();
+void ic();
 
 int main()
 {
@@ -24,4 +15,14 @@ int main()
     br();
 
     return 0;
+}
+
+void br()
+{
+    printf("Brazil, Russia\n");
+}
+
+void ic()
+{
+    printf("India, China");
 }

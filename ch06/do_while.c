@@ -10,13 +10,11 @@ int main()
     do 
     {
         printf("To enter the triskaidekaphobia therapy club, enter q to quit\n");
-
         status = scanf("%d", &code_entered);
         if (status != 1)
         {
             return 0;
-        }
-            
+        }            
     } while (code_entered != secret_code);
 
     printf("Congratulations! You are cured!\n");

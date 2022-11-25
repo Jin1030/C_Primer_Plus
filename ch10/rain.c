@@ -16,7 +16,7 @@ int main(void)
 
     int year, month; float subtot, total;
     printf(" YEAR RAINFALL (inches)\n");
-    for(int i = 0, total = 0; i < YEARS * MONTHS; i++) 
+    for(year = 0, total = 0; year < YEARS; year++) 
     {
         // for each year, sum rainfall for each month
         for (month = 0, subtot = 0; month < MONTHS; month++) 
@@ -30,8 +30,7 @@ int main(void)
 
     for (month = 0; month < MONTHS; month++)
     { // for each month, sum rainfall over years
-        for (year = 0, subtot =0; year < YEARS; year++) 
-            subtot += rain[year][month];
+        for (year = 0, subtot =0; year < YEARS; year++) subtot += rain[year][month];
             printf("%4.1f ", subtot/YEARS); 
     }
     printf("\n");

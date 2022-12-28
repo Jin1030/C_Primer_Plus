@@ -15,7 +15,7 @@ struct month {
 };
 
 
-int cal_day(struct month m[], int);
+int cal_day(struct month m[], char*);
 
 
 
@@ -30,7 +30,7 @@ int main( int argc, char* argv[])
         {"may", "MAY", 31, 5},
         {"june", "JUN", 30, 6},
         {"july", "JUL", 31, 7},
-        {"auguest", "AUG", 31, 8},
+        {"august", "AUG", 31, 8},
         {"september", "SEP", 30, 9},
         {"october", "OCT", 31, 10},
         {"november", "NOV", 30, 11},
@@ -48,16 +48,11 @@ int main( int argc, char* argv[])
         exit(EXIT_FAILURE);
     }
     
-    int mon_tar = atoi(argv[1]);
+    char month_tar[LEN];
+    strcpy(month_tar, argv[1]);
 
-    if (mon_tar > 12 || mon_tar < 1)
-    {
-        printf("invalid arguments.\n");
-        exit(EXIT_FAILURE);
-    }
-    
 
-    day_to_mon = cal_day(months, mon_tar);
+    day_to_mon = cal_day(months, month_tar);
 
     printf("days is %d\n", day_to_mon);
 
@@ -65,14 +60,21 @@ int main( int argc, char* argv[])
 }
 
 
-int cal_day(struct month m[], int mon)
+int cal_day(struct month m[], char* mon)
 {
     int index = 0;
     int days = 0;
-    while ( m[index].month_num != mon)
+    while ( index < MONTH_L && strcmp(m[index].month_na, mon) != 0 ) // don"t forget index < MONTH_L
     {
         index++;
     }
+
+    if (index >= MONTH_L)
+    {
+        printf("invalid month.\n");
+        exit(EXIT_FAILURE);
+    }
+
     for (int i = 0; i <= index; i++)
     {
         days += m[i].days;
